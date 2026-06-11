@@ -1,19 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!-- Aplicacao de console -->
     <OutputType>Exe</OutputType>
-    <!-- Versao do .NET. Pode trocar para net6.0 / net7.0 conforme o que estiver instalado -->
     <TargetFramework>net8.0</TargetFramework>
-    <!-- Mantemos o estilo classico com metodo Main explicito (mais didatico) -->
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <RootNamespace>CarteiroChines</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Garante que o arquivo de exemplo seja copiado para a pasta de saida ao compilar -->
     <None Update="grafo.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="grafo_euleriano.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="grafo_impossivel.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

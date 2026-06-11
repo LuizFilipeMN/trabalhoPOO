@@ -6,13 +6,6 @@ using CarteiroChines.Servicos;
 
 namespace CarteiroChines
 {
-    /// <summary>
-    /// Classe principal. Faz a interacao com o usuario via console:
-    /// 1) pergunta o caminho do arquivo CSV;
-    /// 2) le o grafo;
-    /// 3) mostra os dados lidos;
-    /// 4) calcula e exibe a menor rota que passa por todas as arestas.
-    /// </summary>
     public class Program
     {
         public static void Main(string[] args)
@@ -25,21 +18,16 @@ namespace CarteiroChines
 
             try
             {
-                // O usuario pode passar o caminho do arquivo como argumento
-                // ou digitar quando for solicitado.
                 string caminhoArquivo = ObterCaminhoArquivo(args);
 
-                // ---- 1) Leitura do CSV ----
                 LeitorCsv leitor = new LeitorCsv();
                 Grafo grafo = leitor.Ler(caminhoArquivo);
 
                 ExibirGrafo(grafo);
 
-                // ---- 2) Resolucao do problema (Carteiro Chines) ----
                 ResolvedorCarteiroChines resolvedor = new ResolvedorCarteiroChines();
                 Resultado resultado = resolvedor.Resolver(grafo);
 
-                // ---- 3) Exibicao do resultado ----
                 ExibirResultado(resultado);
             }
             catch (FileNotFoundException erro)
@@ -63,7 +51,6 @@ namespace CarteiroChines
             Console.ReadLine();
         }
 
-        // Decide de onde vem o caminho do arquivo CSV.
         private static string ObterCaminhoArquivo(string[] args)
         {
             if (args != null && args.Length > 0 && !string.IsNullOrWhiteSpace(args[0]))
@@ -73,12 +60,11 @@ namespace CarteiroChines
             string entrada = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(entrada))
-                return "grafo.csv"; // arquivo de exemplo que acompanha o projeto
+                return "grafo.csv";
 
             return entrada.Trim();
         }
 
-        // Mostra os vertices e as arestas que foram lidos do arquivo.
         private static void ExibirGrafo(Grafo grafo)
         {
             Console.WriteLine();
@@ -95,7 +81,6 @@ namespace CarteiroChines
             Console.WriteLine();
         }
 
-        // Mostra o resultado final de forma amigavel.
         private static void ExibirResultado(Resultado resultado)
         {
             Console.WriteLine("-------------------------------------------");

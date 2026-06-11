@@ -2,11 +2,6 @@ using System;
 
 namespace CarteiroChines.Modelos
 {
-    /// <summary>
-    /// Representa uma aresta (ligacao) de um grafo direcionado.
-    /// Vai de "Origem" para "Destino" e possui um "Peso" (custo/distancia).
-    /// Por ser direcionada, a aresta A -> B nao significa que existe B -> A.
-    /// </summary>
     public class Aresta
     {
         public string Origem { get; private set; }
@@ -15,7 +10,6 @@ namespace CarteiroChines.Modelos
 
         public Aresta(string origem, string destino, int peso)
         {
-            // Validacoes basicas para evitar dados invalidos
             if (string.IsNullOrWhiteSpace(origem))
                 throw new ArgumentException("A origem da aresta nao pode ser vazia.");
 
